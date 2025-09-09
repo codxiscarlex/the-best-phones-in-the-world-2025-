@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Best Phones in the World 2025</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+      max-width: 900px;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      letter-spacing: 2px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: #b0c4de;
+    }
+
+    /* Container for all phones */
+    .phones-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      width: 100%;
+    }
+
+    /* Each phone card */
+    .phone-card {
+      background: rgba(255, 255, 255, 0.07);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .phone-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3);
+    }
+
+    .phone-image {
+      width: 100%;
+      height: 320px;
+      object-fit: contain;
+      background: #111;
+    }
+
+    .phone-content {
+      padding: 20px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .phone-title {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      color: #ffd700;
+      text-shadow: 1px 1px 3px #000;
+    }
+
+    .phone-description {
+      font-size: 1rem;
+      color: #ccc;
+      margin-bottom: 20px;
+      min-height: 60px;
+    }
+
+    .specs-list {
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 15px;
+    }
+
+    .specs-list li {
+      margin-bottom: 8px;
+      font-size: 1rem;
+      color: #eee;
+    }
+
+    /* Button for toggling specs */
+    .toggle-specs-btn {
+      background: #ffd700;
+      border: none;
+      border-radius: 25px;
+      padding: 10px 25px;
+      font-weight: bold;
+      color: #222;
+      cursor: pointer;
+      align-self: center;
+      transition: background 0.3s ease;
+      box-shadow: 0 4px 15px #ffd700aa;
+      user-select: none;
+    }
+
+    .toggle-specs-btn:hover {
+      background: #ffec70;
+    }
+
+    /* Hidden specs initially */
+    .hidden-specs {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+    }
+
+    .hidden-specs.show {
+      max-height: 400px; /* large enough */
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 50px;
+      text-align: center;
+      color: #999;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      .phone-image {
+        height: 220px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>The Best Phones in the World - 2025</h1>
+    <p>Explore the top flagship smartphones with stunning design and cutting-edge specs.</p>
+  </header>
+
+  <section class="phones-container" id="phones-container">
+    <!-- Phone cards will be inserted here by JS -->
+  </section>
+
+  <footer>
+    &copy; 2025 BestPhones. All rights reserved.
+  </footer>
+
+  <script>
+    // Phone data array
+    const phones = [
+      {
+        name: "iPhone 15 Pro Max",
+        image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-max-gold-select-2023?wid=834&hei=1000&fmt=jpeg&qlt=80&.v=1692078658997",
+        description: "Apple's flagship with titanium frame, A17 Pro chip, and pro-grade camera system.",
+        specs: {
+          Display: "6.7-inch Super Retina XDR OLED, 120Hz",
+          Processor: "Apple A17 Pro",
+          RAM: "8GB",
+          Storage: "128GB / 256GB / 512GB / 1TB",
+          Camera: "48MP main + 12MP ultrawide + 12MP telephoto",
+          Battery: "Up to 29 hours video playback",
+          OS: "iOS 17",
+          Price: "$1,199+"
+        }
+      },
+      {
+        name: "Samsung Galaxy S24 Ultra",
+        image: "https://images.samsung.com/is/image/samsung/p6pim/levant/2302/gallery/levant-galaxy-s24-ultra-s918-sm-s918bzkgmea-534362744?$720_576_PNG$",
+        description: "Samsung's powerhouse with a 200MP camera and Snapdragon 8 Gen 3 processor.",
+        specs: {
+          Display: "6.8-inch Dynamic AMOLED 2X, 120Hz",
+          Processor: "Snapdragon 8 Gen 3",
+          RAM: "12GB / 16GB",
+          Storage: "256GB / 512GB / 1TB",
+          Camera: "200MP main + 12MP ultrawide + 10MP periscope telephoto",
+          Battery: "5,000 mAh, 45W fast charging",
+          OS: "Android 14, One UI 6",
+          Price: "$1,199+"
+        }
+      },
+      {
+        name: "Google Pixel 8 Pro",
+        image: "https://store.google.com/product/images/google-pixel-8-pro.png",
+        description: "Google’s AI-powered flagship with Tensor G3 chip and clean Android experience.",
+        specs: {
+          Display: "6.7-inch LTPO OLED, 120Hz",
+          Processor: "Google Tensor G3",
+          RAM: "12GB",
+          Storage: "128GB / 256GB / 512GB",
+          Camera: "50MP main + 48MP telephoto + 12MP ultrawide",
+          Battery: "5,050 mAh, 30W fast charging",
+          OS: "Android 14",
+          Price: "$899+"
+        }
+      },
+      {
+        name: "OnePlus 12",
+        image: "https://image01.oneplus.net/ebp/202304/27/1-m00-14-2e-rb8bwl-3pdzoaeatbaae8fraarcrrv7tpi489_840_840.png",
+        description: "Flagship killer with Snapdragon 8 Gen 3 and ultra-fast charging.",
+        specs: {
+          Display: "6.7-inch AMOLED, 120Hz",
+          Processor: "Snapdragon 8 Gen 3",
+          RAM: "8GB / 12GB / 16GB",
+          Storage: "128GB / 256GB / 512GB",
+          Camera: "50MP main + 48MP ultrawide",
+          Battery: "5,000 mAh, 100W wired charging",
+          OS: "Android 14, OxygenOS",
+          Price: "$799+"
+        }
+      },
+      {
+        name: "Sony Xperia 1 V",
+        image: "https://cdn.dxomark.com/wp-content/uploads/medias/post-108943/Sony-Xperia-1-V-hero-review.jpg",
+        description: "Professional-grade camera phone with 4K OLED display and manual controls.",
+        specs: {
+          Display: "6.5-inch 4K OLED, 120Hz",
+          Processor: "Snapdragon 8 Gen 2",
+          RAM: "12GB",
+          Storage: "256GB",
+          Camera: "12MP triple camera with ZEISS optics",
+          Battery: "5,000 mAh, 30W charging",
+          OS: "Android 13",
+          Price: "$1,399+"
+        }
+      }
+    ];
+
+    const container = document.getElementById('phones-container');
+
+    function createPhoneCard(phone) {
+      // Create elements
+      const card = document.createElement('article');
+      card.className = 'phone-card';
+
+      const img = document.createElement('img');
+      img.className = 'phone-image';
+      img.src = phone.image;
+      img.alt = `${phone.name} image`;
+
+      const content = document.createElement('div');
+      content.className = 'phone-content';
+
+      const title = document.createElement('h2');
+      title.className = 'phone-title';
+      title.textContent = phone.name;
+
+      const desc = document.createElement('p');
+      desc.className = 'phone-description';
+      desc.textContent = phone.description;
+
+      // Specs list (initially hidden)
+      const specsList = document.createElement('ul');
+      specsList.className = 'specs-list hidden-specs';
+
+      for (const [key, value] of Object.entries(phone.specs)) {
+        const li = document.createElement('li');
+        li.innerHTML = `<strong>${key}:</strong> ${value}`;
+        specsList.appendChild(li);
+      }
+
+      // Toggle specs button
+      const toggleBtn = document.createElement('button');
+      toggleBtn.className = 'toggle-specs-btn';
+      toggleBtn.textContent = 'Show Specs';
+
+      toggleBtn.addEventListener('click', () => {
+        const isShown = specsList.classList.toggle('show');
+        toggleBtn.textContent = isShown ? 'Hide Specs' : 'Show Specs';
+      });
+
+      // Append children
+      content.appendChild(title);
+      content.appendChild(desc);
+      content.appendChild(specsList);
+      content.appendChild(toggleBtn);
+
+      card.appendChild(img);
+      card.appendChild(content);
+
+      return card;
+    }
+
+    // Render phones
+    phones.forEach(phone => {
+      container.appendChild(createPhoneCard(phone));
+    });
+  </script>
+</body>
+</html>
